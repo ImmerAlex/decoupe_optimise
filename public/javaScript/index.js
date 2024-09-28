@@ -42,11 +42,11 @@ const handleCalc = () => {
 
     let html = `
     <h1>Resultat</h1>
-    <p id="totalBar">Nb total: ${Object.keys(total).length}</p>
+    <p id="totalBar">Nombre total: ${Object.keys(total).length}</p>
     ${Object.keys(total).map((key) => {
         return `
         <div>
-            <h2>Barre ${key}</h2>
+            <h3>Barre ${key}</h3>
             <p>${total[key].join(' + ')}</p>
         </div>
         `
@@ -148,11 +148,8 @@ const calc = () => {
         return;
     }
 
-    pieces = breakOversizedParts(pieces);  // Handle oversized parts
-    const rods = distributePiecesIntoRods(pieces);  // Distribute into rods
-
-    console.log(rods);
-    return rods;
+    pieces = breakOversizedParts(pieces);
+    return distributePiecesIntoRods(pieces);
 }
 
 inputBaseSize.addEventListener('input', setBaseSize);
