@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="public/css/reset.css">
+    <link rel="stylesheet" href="public/css/style.css">
+    <title>Découpage opti</title>
+</head>
+<body>
+
+<h1>Découpe optimisé</h1>
+
+<div class="container-input">
+    <label for="base-size">Dimensions plaque référence</label>
+    <input type="number" id="base-size" value="0">
+</div>
+
+<div class="container-input">
+    <button id="add-size-btn">Ajouter</button>
+    <button id="calc-btn">Calculer</button>
+    <button id="delete-btn">Supprimer</button>
+</div>
+
+<div id="result"></div>
+
+<div id="container">
+    <div class="container-input">
+        <label for="size1">Longueur</label>
+        <input type="number" id="size1" value="0" min="0">
+        <p>x</p>
+        <label for="mult1">
+            <input type="number" id="mult1" value="1" min="1">
+        </label>
+    </div>
+
+    <div class="container-input">
+        <label for="size2">Longueur</label>
+        <input type="number" id="size2" value="0" min="0">
+        <p>x</p>
+        <label for="mult2">
+            <input type="number" id="mult2" value="1" min="1">
+        </label>
+    </div>
+
+    <div class="container-input">
+        <label for="size3">Longueur</label>
+        <input type="number" id="size3" value="0" min="0">
+        <p>x</p>
+        <label for="mult3">
+            <input type="number" id="mult3" value="1" min="1">
+        </label>
+    </div>
+</div>
+
+<script src="public/javaScript/index.js"></script>
+</body>
+</html>
