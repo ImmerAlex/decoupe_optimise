@@ -11,22 +11,24 @@
 
 		<div class="container">
 			<div class="container-input container-input-project">
-                <h2>
-                    <label for="project-name">Nom du projet</label>
-                </h2>
+				<h2>
+					<label for="project-name">Nom du projet</label>
+				</h2>
 				<input id="project-name" type="text" placeholder="Nom du projet" />
 			</div>
 
 			<div id="container-chute">
-                <h2>Chutes</h2>
+				<h2>Chutes</h2>
 
 				<div class="container-input">
 					<button class="add-btn" id="add-chute">Ajouter</button>
-					<!-- <button class="calc-btn">Calculer</button> -->
 					<button class="suppr-btn" id="suppr-chute">Supprimer</button>
 				</div>
 
-				<div id="content-chutes" data-prototype='<div class="chute">
+				<div
+					id="content-chutes"
+					data-prototype='
+                    <div class="chute">
 						<div>
 							<label for="chute[__name__]">Longueur</label>
 							<input id="chute[__name__]" min="0" type="number" value="0" />
@@ -37,8 +39,8 @@
 								<input id="multChute[__name__]" min="1" type="number" value="1" />
 							</label>
 						</div>
-					</div>'>
-
+					</div>'
+				>
 					<div class="chute">
 						<div>
 							<label for="chute[0]">Longueur</label>
@@ -53,47 +55,69 @@
 					</div>
 				</div>
 			</div>
+
+			<div id="container-main">
+				<h2>-- nom colonne --</h2>
+
+				<div id="base-size-container">
+					<label for="base-size">Dimensions profilé référence</label>
+					<input id="base-size" type="number" value="0" />
+				</div>
+
+				<div class="container-input">
+					<button class="add-btn" id="add-profile">Ajouter</button>
+					<button class="calc-btn" id="calc-btn">Calculer</button>
+					<button class="suppr-btn" id="suppress-profile">Supprimer</button>
+				</div>
+
+				<div
+					id="container-profile"
+					data-prototype='
+                    <div class="profile">
+						<div>
+							<label for="profile[__name__]">
+                                <input id="profile[__name__]" min="0" type="number" placeholder="Longueur..." />
+                            </label>
+						</div>
+						<p>x</p>
+						<div>
+							<label for="multProfile[__name__]">
+								<input id="multProfile[__name__]" min="1" type="number" value="1" />
+							</label>
+						</div>
+                        <div>
+                            <label for="cadre[__name__]">
+                                <input id="cadre[__name__]" type="text" placeholder="Nom cadre..." />
+                            </label>
+                        </div>
+					</div>'
+				>
+					<div class="profile">
+						<div>
+							<label for="profile[0]">
+								<input
+									id="profile[0]"
+									min="0"
+									type="number"
+									placeholder="Longueur..."
+								/>
+							</label>
+						</div>
+						<p>x</p>
+						<div>
+							<label for="multProfile[0]">
+								<input id="multProfile[0]" min="1" type="number" value="1" />
+							</label>
+						</div>
+						<div>
+							<label for="cadre[0]">
+								<input id="cadre[0]" type="text" placeholder="Nom cadre..." />
+							</label>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
-
-		<!-- <div class="container-input">
-    <label for="base-size">Dimensions profilé référence</label>
-    <input id="base-size" type="number" value="0" />
-  </div> -->
-
-		<!-- <div class="container-input">
-			<button class="add-btn">Ajouter</button>
-			<button class="calc-btn">Calculer</button>
-			<button class="suppr-btn">Supprimer</button>
-		</div>
-
-		<div id="container">
-			<div class="container-input">
-				<label for="size1">Longueur</label>
-				<input id="size1" min="0" type="number" value="0" />
-				<p>x</p>
-				<label for="mult1">
-					<input id="mult1" min="1" type="number" value="1" />
-				</label>
-			</div>
-
-			<div class="container-input">
-				<label for="size2">Longueur</label>
-				<input id="size2" min="0" type="number" value="0" />
-				<p>x</p>
-				<label for="mult2">
-					<input id="mult2" min="1" type="number" value="1" />
-				</label>
-			</div>
-
-			<div class="container-input">
-				<label for="size3">Longueur</label>
-				<input id="size3" min="0" type="number" value="0" />
-				<p>x</p>
-				<label for="mult3">
-					<input id="mult3" min="1" type="number" value="1" />
-				</label>
-			</div>
-		</div> -->
 
 		<script type="module" src="./public/javaScript/Controller.js"></script>
 	</body>

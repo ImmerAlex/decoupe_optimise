@@ -1,18 +1,18 @@
 export default class Profile {
-    private longeur: number;
-    private multiple: number;
-    private priorite: number;
-    private cadre: string;
+    public longeur: number;
+    public multiple: number;
+    public priority: number; // Renommé de priorite à priority
+    public cadre: string;
 
     constructor(
         longeur: number,
         multiple: number,
-        priorite: number,
+        priority: number, // Renommé de priorite à priority
         cadre: string,
     ) {
         this.longeur = longeur;
         this.multiple = multiple;
-        this.priorite = priorite;
+        this.priority = priority; // Renommé de priorite à priority
         this.cadre = cadre;
     }
 }

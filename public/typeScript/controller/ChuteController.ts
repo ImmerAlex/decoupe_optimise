@@ -29,7 +29,7 @@ export default class ChuteController {
 	 */
 	private addChute(): void {
 		const prototype = this.content.getAttribute("data-prototype");
-		const index = this.content.childNodes.length + 1;
+		const index = this.content.children.length;
 		const newForm = prototype?.replace(/__name__/g, index.toString());
 		this.content.insertAdjacentHTML("beforeend", newForm ? newForm : "");
 	}

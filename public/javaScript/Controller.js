@@ -8,10 +8,14 @@ class Controller {
     }
     run() {
         this.chuteController.addToChuteList();
-        console.log(ProfileStore.getProfile());
+        this.profileController.addToProfileList();
+        ProfileStore.sortBy("priority", "desc");
+        console.log(ProfileStore.getByName("chute"));
     }
 }
 document.addEventListener("DOMContentLoaded", () => {
+    var _a;
     const controller = new Controller(new ChuteController(), new ProfileController());
-    controller.run();
+    (_a = document
+        .getElementById("calc-btn")) === null || _a === void 0 ? void 0 : _a.addEventListener("click", controller.run.bind(controller));
 });
