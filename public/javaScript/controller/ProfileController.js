@@ -21,7 +21,8 @@ export default class ProfileController {
         this.container.insertAdjacentHTML("beforeend", newForm ? newForm : "");
     }
     supprChute() {
-        const lastChute = this.container.lastElementChild;
+        const lastChute = this.container
+            .lastElementChild;
         if (lastChute) {
             this.container.removeChild(lastChute);
         }
@@ -32,10 +33,11 @@ export default class ProfileController {
             const longueurInput = profile.querySelector(`#profile\\[${index}\\]`);
             const multiplicateurInput = profile.querySelector(`#multProfile\\[${index}\\]`);
             const cadreInput = profile.querySelector(`#cadre\\[${index}\\]`);
-            const longueur = longueurInput.value !== '' ? Number.parseInt(longueurInput.value) : 0;
-            const multiplicateur = multiplicateurInput.value !== '' ? Number.parseInt(multiplicateurInput.value) : 0;
+            const longueur = longueurInput.value !== "" ? Number.parseInt(longueurInput.value) : 0;
+            const multiplicateur = multiplicateurInput.value !== ""
+                ? Number.parseInt(multiplicateurInput.value)
+                : 0;
             const cadre = cadreInput ? cadreInput.value : "";
-            console.log(longueur, multiplicateur, cadre);
             if (longueur <= 0 || multiplicateur <= 0)
                 return;
             ProfileStore.addProfile(new Profile(longueur, multiplicateur, 1, cadre));

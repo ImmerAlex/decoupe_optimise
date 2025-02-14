@@ -9,6 +9,10 @@ export default class ProfileStore {
         }
     }
 
+    static clearProfileList(): void {
+        this.profileList = [];
+    }
+
     static getProfile(): Profile[] {
         return this.profileList;
     }

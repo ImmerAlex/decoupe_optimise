@@ -4,6 +4,9 @@ export default class ProfileStore {
             this.profileList.push(profile);
         }
     }
+    static clearProfileList() {
+        this.profileList = [];
+    }
     static getProfile() {
         return this.profileList;
     }
