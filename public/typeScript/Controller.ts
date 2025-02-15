@@ -29,6 +29,7 @@ class Controller {
 		ProfileStore.sortBy("priority", "desc");
 
 		const result = this.optimizeCuts();
+		
 		this.dataTableController.setData(result);
 		this.dataTableController.render();
 	}

@@ -1,10 +1,12 @@
 import ChuteController from "./controller/ChuteController.js";
 import ProfileController from "./controller/ProfileController.js";
+import DataTableController from "./controller/DataTableController.js";
 import ProfileStore from "./store/ProfileStore.js";
 class Controller {
-    constructor(chuteController, profileController) {
+    constructor(chuteController, profileController, dataTableController) {
         this.chuteController = chuteController;
         this.profileController = profileController;
+        this.dataTableController = dataTableController;
     }
     run() {
         ProfileStore.clearProfileList();
@@ -12,7 +14,8 @@ class Controller {
         this.profileController.addToProfileList();
         ProfileStore.sortBy("priority", "desc");
         const result = this.optimizeCuts();
-        console.log(JSON.stringify(result, null, 2));
+        this.dataTableController.setData(result);
+        this.dataTableController.render();
     }
     optimizeCuts() {
         const projectNameInput = document.getElementById("project-name");
@@ -85,7 +88,7 @@ class Controller {
 }
 document.addEventListener("DOMContentLoaded", () => {
     var _a;
-    const controller = new Controller(new ChuteController(), new ProfileController());
+    const controller = new Controller(new ChuteController(), new ProfileController(), new DataTableController());
     (_a = document
         .getElementById("calc-btn")) === null || _a === void 0 ? void 0 : _a.addEventListener("click", () => controller.run());
 });

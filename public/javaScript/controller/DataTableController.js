@@ -1,68 +1,57 @@
-import { OptimizationResult } from "../types/Type.js";
-
 export default class DataTableController {
-    private data: OptimizationResult | undefined;
-    private dataTableContainer: HTMLElement;
-    private tableProjectName: HTMLElement
-
     constructor() {
-        this.dataTableContainer = document.getElementById("data-table-container")!;
-        this.tableProjectName = document.getElementById("table-project-name")!;
-    }
-    
-    private exemple = {
-        "project": "ARASAKA",
-        "baseSize": 6000,
-        "data": [
-          {
-            "source": "chute",
-            "sourceSize": 3000,
-            "cuts": [
-              {
-                "size": 2800,
-                "cadre": "C1"
-              },
-              {
-                "size": 100,
-                "cadre": "C3"
-              }
-            ],
-            "remaining": 100
-          },
-          {
-            "source": "baseSize",
-            "sourceSize": 6000,
-            "cuts": [
-              {
-                "size": 3100,
-                "cadre": "C4"
-              },
-              {
-                "size": 2100,
-                "cadre": "C4"
-              }
-            ],
-            "remaining": 800
-          },
-          {
-            "source": "baseSize",
-            "sourceSize": 6000,
-            "cuts": [
-              {
-                "size": 1500,
-                "cadre": "C1"
-              },
-              {
-                "size": 1300,
-                "cadre": "C2"
-              }
-            ],
-            "remaining": 3200
-          }
-        ]
-      }
-
-      private htmlTableStruct = `
+        this.exemple = {
+            "project": "ARASAKA",
+            "baseSize": 6000,
+            "data": [
+                {
+                    "source": "chute",
+                    "sourceSize": 3000,
+                    "cuts": [
+                        {
+                            "size": 2800,
+                            "cadre": "C1"
+                        },
+                        {
+                            "size": 100,
+                            "cadre": "C3"
+                        }
+                    ],
+                    "remaining": 100
+                },
+                {
+                    "source": "baseSize",
+                    "sourceSize": 6000,
+                    "cuts": [
+                        {
+                            "size": 3100,
+                            "cadre": "C4"
+                        },
+                        {
+                            "size": 2100,
+                            "cadre": "C4"
+                        }
+                    ],
+                    "remaining": 800
+                },
+                {
+                    "source": "baseSize",
+                    "sourceSize": 6000,
+                    "cuts": [
+                        {
+                            "size": 1500,
+                            "cadre": "C1"
+                        },
+                        {
+                            "size": 1300,
+                            "cadre": "C2"
+                        }
+                    ],
+                    "remaining": 3200
+                }
+            ]
+        };
+        this.htmlTableStruct = `
         <table>
             <thead>
                 <tr>
@@ -89,29 +78,24 @@ export default class DataTableController {
                     <td>300</td>
                 </tr>
             </tbody>
-        </table>`
-
-
-    setData(data: OptimizationResult): void {
-        this.data = data;        
+        </table>`;
+        this.dataTableContainer = document.getElementById("data-table-container");
+        this.tableProjectName = document.getElementById("table-project-name");
     }
-
-    render(): void {
+    setData(data) {
+        this.data = data;
+    }
+    render() {
+        var _a;
         if (!this.data) {
             return;
         }
-
-        console.log(
-            JSON.stringify(this.data, null, 2)
-        );
-        
+        console.log(JSON.stringify(this.data, null, 2));
         this.tableProjectName.textContent = this.data.project;
-
         // clear all thing after tableProject name
         while (this.tableProjectName.nextSibling) {
-            this.tableProjectName.parentNode?.removeChild(this.tableProjectName.nextSibling);
+            (_a = this.tableProjectName.parentNode) === null || _a === void 0 ? void 0 : _a.removeChild(this.tableProjectName.nextSibling);
         }
-
         this.data.data.forEach((elt, index) => {
             const result = `
                 <table>
@@ -143,11 +127,7 @@ export default class DataTableController {
                         </tr>
                     </tbody>
                 </table>`;
-
             this.dataTableContainer.insertAdjacentHTML('beforeend', result);
-        })
-        
-
-
+        });
     }
 }
