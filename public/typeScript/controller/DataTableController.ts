@@ -9,88 +9,6 @@ export default class DataTableController {
         this.dataTableContainer = document.getElementById("data-table-container")!;
         this.tableProjectName = document.getElementById("table-project-name")!;
     }
-    
-    private exemple = {
-        "project": "ARASAKA",
-        "baseSize": 6000,
-        "data": [
-          {
-            "source": "chute",
-            "sourceSize": 3000,
-            "cuts": [
-              {
-                "size": 2800,
-                "cadre": "C1"
-              },
-              {
-                "size": 100,
-                "cadre": "C3"
-              }
-            ],
-            "remaining": 100
-          },
-          {
-            "source": "baseSize",
-            "sourceSize": 6000,
-            "cuts": [
-              {
-                "size": 3100,
-                "cadre": "C4"
-              },
-              {
-                "size": 2100,
-                "cadre": "C4"
-              }
-            ],
-            "remaining": 800
-          },
-          {
-            "source": "baseSize",
-            "sourceSize": 6000,
-            "cuts": [
-              {
-                "size": 1500,
-                "cadre": "C1"
-              },
-              {
-                "size": 1300,
-                "cadre": "C2"
-              }
-            ],
-            "remaining": 3200
-          }
-        ]
-      }
-
-      private htmlTableStruct = `
-        <table>
-            <thead>
-                <tr>
-                    <td class="num-bar">Barre 1</td>
-                    <td>Source</td>
-                    <td>Taille ref</td>
-                    <td>Longueur</td>
-                    <td>Cadre</td>
-                </tr>
-            </thead>
-            <tbody id="table-body">
-                <tr>
-                    <td></td>
-                    <td>chute</td>
-                    <td>3000</td>
-                    <td>500</td>
-                    <td>C1</td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>Chute restant</td>
-                    <td>300</td>
-                </tr>
-            </tbody>
-        </table>`
-
 
     setData(data: OptimizationResult): void {
         this.data = data;        
@@ -107,7 +25,6 @@ export default class DataTableController {
         
         this.tableProjectName.textContent = this.data.project;
 
-        // clear all thing after tableProject name
         while (this.tableProjectName.nextSibling) {
             this.tableProjectName.parentNode?.removeChild(this.tableProjectName.nextSibling);
         }
@@ -146,8 +63,5 @@ export default class DataTableController {
 
             this.dataTableContainer.insertAdjacentHTML('beforeend', result);
         })
-        
-
-
     }
 }
