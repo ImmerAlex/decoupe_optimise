@@ -1,14 +1,65 @@
 #data-table {
-    width: 95%;
-    margin: 20px 0;
-    padding: 20px;
-    border: 1px solid #c2c2c2;
-    border-radius: 10px;
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+	width: 95%;
+	margin: 20px 0;
+	padding: 20px;
+	border: 1px solid #c2c2c2;
+	border-radius: 10px;
 
-    #table-project-name {
-        font-size: 20px;
-        font-weight: bold;
-        margin-bottom: 20px;
-    }
+	#table-project-name {
+		font-size: 20px;
+		font-weight: bold;
+	}
 
+	.row {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+
+		.row-header {
+			display: flex;
+			gap: 25px;
+
+			p {
+				font-weight: bold;
+
+				span {
+					font-weight: normal;
+				}
+			}
+		}
+
+		.row-content {
+			display: grid;
+			grid-template-columns: repeat(3, .15fr);
+			grid-template-rows: repeat(2, .15fr);
+			grid-column-gap: 10px;
+			grid-row-gap: 10px;
+
+			.bold {
+				font-weight: bold;
+			}
+
+			.row-content-header {
+				display: flex;
+				gap: 25px;
+
+				p {
+					font-weight: bold;
+				}
+			}
+
+			.row-content-body {
+				display: flex;
+				flex-direction: column;
+
+				.row-content-body-row {
+					display: flex;
+					gap: 25px;
+				}
+			}
+		}
+	}
 }

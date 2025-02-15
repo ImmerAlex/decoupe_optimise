@@ -1,35 +1,24 @@
 import ChuteController from "./controller/ChuteController.js";
 import ProfileController from "./controller/ProfileController.js";
+import DataTableController from "./controller/DataTableController.js";
 import ProfileStore from "./store/ProfileStore.js";
 import Profile from "./data/Profile.js";
+import { OptimizationResult } from "./types/Type.js";
 
-// Types
-type CutResult = {
-	source: "chute" | "baseSize";
-	sourceSize: number;
-	cuts: Array<{
-		size: number;
-		cadre: string;
-	}>;
-	remaining: number;
-};
-
-type OptimizationResult = {
-	project: string;
-	baseSize: number;
-	data: CutResult[];
-};
 
 class Controller {
 	private chuteController: ChuteController;
 	private profileController: ProfileController;
+	private dataTableController: DataTableController;
 
 	constructor(
 		chuteController: ChuteController,
-		profileController: ProfileController
+		profileController: ProfileController,
+		dataTableController: DataTableController
 	) {
 		this.chuteController = chuteController;
 		this.profileController = profileController;
+		this.dataTableController = dataTableController;
 	}
 
 	run(): void {
@@ -40,7 +29,8 @@ class Controller {
 		ProfileStore.sortBy("priority", "desc");
 
 		const result = this.optimizeCuts();
-		console.log(JSON.stringify(result, null, 2));
+		this.dataTableController.setData(result);
+		this.dataTableController.render();
 	}
 
 	private optimizeCuts(): OptimizationResult {
@@ -153,7 +143,8 @@ class Controller {
 document.addEventListener("DOMContentLoaded", () => {
 	const controller = new Controller(
 		new ChuteController(),
-		new ProfileController()
+		new ProfileController(),
+		new DataTableController()
 	);
 
 	document
