@@ -60,14 +60,15 @@ export default class ChuteController {
 
             if (length <= 0 || multiplier <= 0) return;
 
-			ChuteStore.addProfile(
-				new Profile(
-					length,
-					multiplier,
-					10,
-					"chute"
-				)
-			);
+			for (let i = 0; i < multiplier; i++) {
+				ChuteStore.addProfile(
+					new Profile(
+						length,
+						10,
+						"chute"
+					)
+				);
+			}
 		});
 	}
 }

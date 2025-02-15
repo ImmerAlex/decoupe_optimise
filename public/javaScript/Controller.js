@@ -10,7 +10,6 @@ class Controller {
         ProfileStore.clearProfileList();
         this.chuteController.addToChuteList();
         this.profileController.addToProfileList();
-        // Trier les profiles par priorité (chutes en premier, puis par taille décroissante)
         ProfileStore.sortBy("priority", "desc");
         const result = this.optimizeCuts();
         console.log(JSON.stringify(result, null, 2));
@@ -23,11 +22,11 @@ class Controller {
         const result = {
             project: projectNameInput.value,
             baseSize: baseSize,
-            data: []
+            data: [],
         };
         // Séparer les chutes (priority 10) des profiles normaux
-        const chutes = profiles.filter(p => p.priority === 10);
-        let remainingProfiles = profiles.filter(p => p.priority !== 10);
+        const chutes = profiles.filter((p) => p.priority === 10);
+        let remainingProfiles = profiles.filter((p) => p.priority !== 10);
         // D'abord, essayer d'utiliser les chutes
         for (const chute of chutes) {
             const cutResult = this.optimizeCutForSource(chute.longeur, remainingProfiles);
@@ -36,7 +35,7 @@ class Controller {
                     source: "chute",
                     sourceSize: chute.longeur,
                     cuts: cutResult.cuts,
-                    remaining: cutResult.remaining
+                    remaining: cutResult.remaining,
                 });
                 // Mettre à jour les profiles restants
                 remainingProfiles = this.removeUsedProfiles(remainingProfiles, cutResult.cuts);
@@ -49,7 +48,7 @@ class Controller {
                 source: "baseSize",
                 sourceSize: baseSize,
                 cuts: cutResult.cuts,
-                remaining: cutResult.remaining
+                remaining: cutResult.remaining,
             });
             remainingProfiles = this.removeUsedProfiles(remainingProfiles, cutResult.cuts);
         }
@@ -58,7 +57,7 @@ class Controller {
     optimizeCutForSource(sourceSize, profiles) {
         const result = {
             cuts: [],
-            remaining: sourceSize
+            remaining: sourceSize,
         };
         // Tri des profiles par taille décroissante pour optimiser l'utilisation
         const sortedProfiles = [...profiles].sort((a, b) => b.longeur - a.longeur);
@@ -66,7 +65,7 @@ class Controller {
             if (profile.longeur <= result.remaining) {
                 result.cuts.push({
                     size: profile.longeur,
-                    cadre: profile.cadre
+                    cadre: profile.cadre,
                 });
                 result.remaining -= profile.longeur;
             }
@@ -76,7 +75,7 @@ class Controller {
     removeUsedProfiles(profiles, usedCuts) {
         const remainingProfiles = [...profiles];
         for (const cut of usedCuts) {
-            const index = remainingProfiles.findIndex(p => p.longeur === cut.size && p.cadre === cut.cadre);
+            const index = remainingProfiles.findIndex((p) => p.longeur === cut.size && p.cadre === cut.cadre);
             if (index !== -1) {
                 remainingProfiles.splice(index, 1);
             }
@@ -87,49 +86,57 @@ class Controller {
 document.addEventListener("DOMContentLoaded", () => {
     var _a;
     const controller = new Controller(new ChuteController(), new ProfileController());
-    (_a = document.getElementById("calc-btn")) === null || _a === void 0 ? void 0 : _a.addEventListener("click", () => controller.run());
+    (_a = document
+        .getElementById("calc-btn")) === null || _a === void 0 ? void 0 : _a.addEventListener("click", () => controller.run());
 });
-// const structFinalExemple = {
-//     project: "ARASAKA",
-//     profileSize: 3000,
-//     cadre: {
-//         "chute 1": {
-//             chuteSize: 1500,
-//             data: [
-//                 {
-//                     cadre: "C1",
-//                     size: 500
-//                 },
-//                 {
-//                     cadre: "C1",
-//                     size: 800
-//                 }
-//             ]
-//         },
-//         "barre 1": [
-//             {
-//                 cadre: "C1",
-//                 size: 1500
-//             },
-//             {
-//                 cadre: "C3",
-//                 size: 500
-//             },
-//             {
-//                 cadre: "C1",
-//                 size: 500
-//             }
-//         ]
-//         "barre 2": [
-//             {
-//                 cadre: "C1",
-//                 size: 2000
-//             },
-//             {
-//                 cadre: "C3",
-//                 size: 1000
-//             },
-//         ]
-//         ...
-//     }
-// }
+const structFinalExemple = {
+    project: "ARASAKA",
+    baseSize: 6000,
+    data: [
+        {
+            source: "chute",
+            sourceSize: 3000,
+            cuts: [
+                {
+                    size: 2800,
+                    cadre: "C3",
+                },
+            ],
+            remaining: 200,
+        },
+        {
+            source: "baseSize",
+            sourceSize: 6000,
+            cuts: [
+                {
+                    size: 5000,
+                    cadre: "C4",
+                },
+                {
+                    size: 500,
+                    cadre: "C4",
+                },
+            ],
+            remaining: 500,
+        },
+        {
+            source: "baseSize",
+            sourceSize: 6000,
+            cuts: [
+                {
+                    size: 3100,
+                    cadre: "C1",
+                },
+                {
+                    size: 1500,
+                    cadre: "C1",
+                },
+                {
+                    size: 1300,
+                    cadre: "C2",
+                },
+            ],
+            remaining: 100,
+        },
+    ],
+};

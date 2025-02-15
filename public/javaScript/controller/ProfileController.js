@@ -40,7 +40,9 @@ export default class ProfileController {
             const cadre = cadreInput ? cadreInput.value : "";
             if (longueur <= 0 || multiplicateur <= 0)
                 return;
-            ProfileStore.addProfile(new Profile(longueur, multiplicateur, 1, cadre));
+            for (let i = 0; i < multiplicateur; i++) {
+                ProfileStore.addProfile(new Profile(longueur, 1, cadre));
+            }
         });
     }
 }
