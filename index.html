@@ -19,60 +19,74 @@
 				<h2>
 					<label for="project-name">Nom du projet</label>
 				</h2>
-				<input id="project-name" type="text" placeholder="Nom du projet" />
-			</div>
-
-			<div id="container-chute">
-				<h2>Chutes</h2>
-
-				<div class="container-input">
-					<button class="add-btn" id="add-chute">Ajouter</button>
-					<button class="suppr-btn" id="suppr-chute">Supprimer</button>
-				</div>
-
-				<div
-					id="content-chutes"
-					data-prototype='
-                    <div class="chute">
-						<div>
-							<label for="chute[__name__]">Longueur</label>
-							<input id="chute[__name__]" min="0" type="number" value="0" />
-						</div>
-						<p>x</p>
-						<div>
-							<label for="multChute[__name__]">
-								<input id="multChute[__name__]" min="1" type="number" value="1" />
-							</label>
-						</div>
-					</div>'
-				>
-					<div class="chute">
-						<div>
-							<label for="chute[0]">Longueur</label>
-							<input id="chute[0]" min="0" type="number" value="0" />
-						</div>
-						<p>x</p>
-						<div>
-							<label for="multChute[0]">
-								<input id="multChute[0]" min="1" type="number" value="1" />
-							</label>
-						</div>
-					</div>
-				</div>
+				<input
+					id="project-name"
+					type="text"
+					placeholder="Nom du projet" />
 			</div>
 
 			<div id="container-main">
-				<h2>-- nom colonne --</h2>
+				<h2>Profilé référence</h2>
 
 				<div id="base-size-container">
 					<label for="base-size">Dimensions profilé référence</label>
 					<input id="base-size" type="number" value="0" />
 				</div>
 
+				<div id="container-chute">
+					<h2>Chutes</h2>
+	
+					<div class="container-input">
+						<button class="add-btn" id="add-chute">Ajouter</button>
+						<button class="suppr-btn" id="suppr-chute">
+							Supprimer
+						</button>
+					</div>
+	
+					<div
+						id="content-chutes"
+						data-prototype='
+						<div class="chute">
+							<div>
+								<label for="chute[__name__]">Longueur</label>
+								<input id="chute[__name__]" min="0" type="number" value="0" />
+							</div>
+							<p>x</p>
+							<div>
+								<label for="multChute[__name__]">
+									<input id="multChute[__name__]" min="1" type="number" value="1" />
+								</label>
+							</div>
+						</div>'>
+						<div class="chute">
+							<div>
+								<label for="chute[0]">Longueur</label>
+								<input
+									id="chute[0]"
+									min="0"
+									type="number"
+									value="0" />
+							</div>
+							<p>x</p>
+							<div>
+								<label for="multChute[0]">
+									<input
+										id="multChute[0]"
+										min="1"
+										type="number"
+										value="1" />
+								</label>
+							</div>
+						</div>
+					</div>
+				</div>
+
 				<div class="container-input">
 					<button class="add-btn" id="add-profile">Ajouter</button>
 					<button class="calc-btn" id="calc-btn">Calculer</button>
-					<button class="suppr-btn" id="suppress-profile">Supprimer</button>
+					<button class="suppr-btn" id="suppress-profile">
+						Supprimer
+					</button>
 				</div>
 
 				<div
@@ -95,8 +109,7 @@
                                 <input id="cadre[__name__]" type="text" placeholder="Nom cadre..." />
                             </label>
                         </div>
-					</div>'
-				>
+					</div>'>
 					<div class="profile">
 						<div>
 							<label for="profile[0]">
@@ -104,19 +117,25 @@
 									id="profile[0]"
 									min="0"
 									type="number"
-									placeholder="Longueur..."
-								/>
+									placeholder="Longueur..." />
 							</label>
 						</div>
 						<p>x</p>
 						<div>
 							<label for="multProfile[0]">
-								<input id="multProfile[0]" min="1" type="number" value="1" />
+								<input
+									id="multProfile[0]"
+									min="1"
+									type="number"
+									value="1" />
 							</label>
 						</div>
 						<div>
 							<label for="cadre[0]">
-								<input id="cadre[0]" type="text" placeholder="Nom cadre..." />
+								<input
+									id="cadre[0]"
+									type="text"
+									placeholder="Nom cadre..." />
 							</label>
 						</div>
 					</div>
@@ -125,6 +144,6 @@
 		</div>
 
 		<!-- <script type="module" src="./public/javaScript/Controller.js"></script> -->
-		 <script src="./public/javaScript/ControllerMerge.js"></script>
+		<script src="./public/javaScript/ControllerMerge.js"></script>
 	</body>
 </html>
